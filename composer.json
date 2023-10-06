@@ -1,0 +1,21 @@
+{
+    "name": "oxygenzsas/composer_lib_bdd_mysql",
+    "description": "Une classe de gestion de Bdd mysql pour mon framework\n\n",
+    "license": "MIT",
+    "keywords": ["bdd","mysql"],
+    "authors": [
+        {
+            "name": "nvanhaezebrouck",
+            "email": "nicolas@oxygenz.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OxygenzSAS\\BddMysql\\" : "src/"
+        }
+    },
+    "require": {
+        "oxygenzsas/composer_lib_interfaces": "^0.2",
+        "ext-pdo": "*"
+    }
+}

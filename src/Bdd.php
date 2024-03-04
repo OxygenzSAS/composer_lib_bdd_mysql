@@ -56,7 +56,11 @@ class Bdd implements BddInterface {
             if ($this->charset != '') {
                 $dsn .= 'options=\'--client_encoding=' . $this->charset . '\'' . ';';
             }
-            $this->conn = new \PDO($dsn, $this->login, $this->password);
+            try {
+                $this->conn = new \PDO($dsn, $this->login, $this->password);
+            } catch(\Exception $e){
+                throw new \Exception('Failed to connect to database');
+            }
             $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
 

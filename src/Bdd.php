@@ -59,7 +59,7 @@ class Bdd implements BddInterface {
             try {
                 $this->conn = new \PDO($dsn, $this->login, $this->password);
             } catch(\Exception $e){
-                throw new \Exception('Failed to connect to database');
+                throw new \Exception('Failed to connect to database : '.$e->getMessage());
             }
             $this->conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }

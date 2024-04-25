@@ -76,7 +76,19 @@ class Bdd implements BddInterface {
      */
     public function exec($sql, $param = [])
     {
-        $stmt = $this->open($sql, $param);
+        try {
+            $stmt = $this->open($sql, $param);
+        } catch(\Exception $e) {
+
+            if(str_contains($e->getMessage(), 'server has gone away')) {
+                $this->conn = null;
+                $this->connect();
+                $stmt = $this->open($sql, $param);
+            } else {
+                throw $e;
+            }
+
+        }
         
         if(!($stmt instanceof \PDOStatement)){
             return $stmt;

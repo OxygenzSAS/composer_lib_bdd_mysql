@@ -106,7 +106,7 @@ class Bdd implements BddInterface {
         }
 
         if (is_null($value)) {
-            return [$tab[0], \PDO::PARAM_NULL, null];
+            return [$tab[1], \PDO::PARAM_NULL, null];
         }
 
         switch ($tab[0]) {
